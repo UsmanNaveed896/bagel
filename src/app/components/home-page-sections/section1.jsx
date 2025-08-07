@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const Section1 = () => {
   return (
-    <section className="relative  overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Carousel as Background */}
       <Carousel
         showArrows={false}
@@ -32,39 +32,47 @@ const Section1 = () => {
         )}
         className="absolute inset-0 z-0"
       >
-        <div className="relative w-full h-screen">
+        {/* Solution 1: Better responsive heights with aspect ratio */}
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
           <Image
             src={Carousel1}
             alt="Carousel Image 1"
             fill
-          
+            style={{ 
+              objectFit: "cover",
+              objectPosition: "center center" // Better centering
+            }}
+            priority // For better loading
           />
-          {/* No black overlay here */}
         </div>
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
           <Image
             src={Carousel2}
             alt="Carousel Image 2"
             fill
-            
+            style={{ 
+              objectFit: "cover",
+              objectPosition: "center center"
+            }}
           />
-          {/* Black overlay only on this image */}
           <div className="absolute inset-0 bg-black opacity-20"></div>
         </div>
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
           <Image
             src={carousel3}
             alt="Carousel Image 3"
             fill
-            
+            style={{ 
+              objectFit: "cover",
+              objectPosition: "center center"
+            }}
           />
-          {/* Black overlay only on this image */}
           <div className="absolute inset-0 bg-black opacity-20"></div>
         </div>
       </Carousel>
 
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 opacity-30 z-30">
+      {/* Decorative Elements - Hidden on mobile for cleaner look */}
+      <div className="absolute inset-0 opacity-30 z-30 hidden sm:block">
         <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
         <div className="absolute top-32 right-20 w-3 h-3 bg-orange-400 rounded-full animate-bounce"></div>
         <div className="absolute bottom-40 left-1/4 w-4 h-4 bg-red-400 rounded-full"></div>
@@ -77,39 +85,32 @@ const Section1 = () => {
         <div className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-white rounded-full animate-ping animation-delay-400"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 flex items-center min-h-screen">
+      {/* Main Content - Better mobile spacing */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 flex items-center min-h-[50vh] sm:min-h-[60vh] md:min-h-[80vh] lg:min-h-screen">
         <div>
           {/* Left Content */}
-          <div className="text-white space-y-6">
-            <h1 className="text-xl md:text-3xl lg:text-5xl font-semibold leading-tight tracking-tight">
+          <div className="text-white space-y-4 sm:space-y-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight">
               The Best Bagels in Manhattan <br />
               Freshly Baked Daily
-              <br />
-              <span className="text-yellow-400"></span>
             </h1>
 
-            <div className="flex items-center space-x-2 text-xl">
+            <div className="flex items-center space-x-2 text-base sm:text-lg md:text-xl">
               <span>🔥 Hand-Rolled. Kettle-Boiled. NYC-Approved.</span>
             </div>
 
-            <p className="text-lg text-gray-300 max-w-md">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-md">
               Stop in for a classic New York bagel done right — or order online
               and skip the line.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="bg-[#ebb050] text-black px-5 py-3 rounded-xl font-bold text-sm hover:from-yellow-600 hover:to-orange-600 transition-all shadow-lg">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
+              <button className="bg-[#ebb050] text-black px-6 py-3 rounded-xl font-bold text-sm hover:bg-yellow-600 transition-all shadow-lg">
                 Order Now
               </button>
-              <button className="border-2 border-yellow-500 bg-white text-yellow-500 px-5 py-3 rounded-xl font-bold text-sm hover:bg-yellow-500 hover:text-white transition-all">
+              <button className="border-2 border-yellow-500 bg-white text-yellow-500 px-6 py-3 rounded-xl font-bold text-sm hover:bg-yellow-500 hover:text-white transition-all">
                 Find Us
               </button>
-            </div>
-
-            {/* Carousel Indicators (Positioned Below Buttons) */}
-            <div className="flex justify-center mt-4">
-              <div className="carousel-indicators"></div>
             </div>
           </div>
         </div>
